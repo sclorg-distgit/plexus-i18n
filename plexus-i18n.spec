@@ -37,7 +37,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        0.6.b10.4.12%{?dist}
+Release:        0.6.b10.4.13%{?dist}
 Summary:        Plexus I18N Component
 License:        ASL 2.0
 URL:            http://plexus.codehaus.org/plexus-components/plexus-i18n
@@ -49,12 +49,12 @@ BuildArch:      noarch
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:  %{?scl_prefix_java_common}ant >= 0:1.6
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-maven-resources-plugin
-BuildRequires:  maven30-maven-doxia-sitetools
-BuildRequires:  maven30-plexus-containers-component-metadata
-BuildRequires:  maven30-plexus-classworlds >= 0:1.1
-BuildRequires:  maven30-plexus-containers-container-default
-BuildRequires:  maven30-plexus-utils
+BuildRequires:  %{?scl_prefix}maven-resources-plugin
+BuildRequires:  %{?scl_prefix}maven-doxia-sitetools
+BuildRequires:  %{?scl_prefix}plexus-containers-component-metadata
+BuildRequires:  %{?scl_prefix}plexus-classworlds >= 0:1.1
+BuildRequires:  %{?scl_prefix}plexus-containers-container-default
+BuildRequires:  %{?scl_prefix}plexus-utils
 
 %description
 The Plexus project seeks to create end-to-end developer tools for
@@ -74,7 +74,7 @@ Javadoc for %{pkg_name}.
 
 %prep
 %setup -q -n plexus-i18n-1.0-beta-10
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %pom_add_dep org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1
 
@@ -94,13 +94,13 @@ set -e -x
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -111,6 +111,9 @@ set -e -x
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0-0.6.b10.4.13
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.0-0.6.b10.4.12
 - maven33 rebuild
 
