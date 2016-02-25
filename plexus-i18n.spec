@@ -37,7 +37,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.0
-Release:        0.6.b10.4.13%{?dist}
+Release:        0.6.b10.4.14%{?dist}
 Summary:        Plexus I18N Component
 License:        ASL 2.0
 URL:            http://plexus.codehaus.org/plexus-components/plexus-i18n
@@ -48,7 +48,7 @@ Source0:        plexus-i18n-1.0-beta-10-src.tar.bz2
 BuildArch:      noarch
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:  %{?scl_prefix_java_common}ant >= 0:1.6
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}maven-resources-plugin
 BuildRequires:  %{?scl_prefix}maven-doxia-sitetools
 BuildRequires:  %{?scl_prefix}plexus-containers-component-metadata
@@ -111,6 +111,9 @@ set -e -x
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.0-0.6.b10.4.14
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0-0.6.b10.4.13
 - maven33 rebuild #2
 
